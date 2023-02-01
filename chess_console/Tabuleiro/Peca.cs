@@ -4,23 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace chess_console.Tabuleiro
+namespace chess_console.tabuleiro
 {
      class Peca
     {
-        public Cor Cor { get; set; }
-        public Position Position { get; protected set; }
+        public Cor Cor { get; protected set; }
+        public Position position { get;  set; }
 
         public int QtdMovimentos { get; protected set; }
 
         public Tabuleiro Tab { get; protected set; }
 
-        public Peca(Cor cor, Position position, Tabuleiro tab)
+        public Peca(Cor cor, Tabuleiro tab)
         {
             Cor = cor;
-            Position = position;
+            this.position = null;
             Tab = tab;
             QtdMovimentos = 0;
         }
+
+        
     }
 }
