@@ -13,13 +13,13 @@ namespace chess_console
             try
             {
                 t.ColocarPeca(new Rei(Enum.Parse<Cor>("Branca"), t), new Position(0, 4));
-                t.ColocarPeca(new Rei(Enum.Parse<Cor>("Preta"), t), new Position(0, 4));
+                t.ColocarPeca(new Rei(Enum.Parse<Cor>("Preta"), t), new Position(7, 4));
 
-                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Branca"), t), new Position(7, 7));
-                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Branca"), t), new Position(7, 0));
+                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Branca"), t), new Position(0, 0));
+                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Branca"), t), new Position(0, 7));
 
-                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Preta"), t), new Position(0, 0));
-                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Preta"), t), new Position(0, 7));
+                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Preta"), t), new Position(7, 0));
+                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Preta"), t), new Position(7, 7));
 
 
 
