@@ -19,7 +19,7 @@ namespace JogoDeXadrez
 
         public Position toPosicao()
         {
-            return new Position(coluna - 'a', 8 - linha);
+            return new Position(8 - linha, coluna - 'a' );
         }
 
         public override string ToString()

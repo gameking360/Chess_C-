@@ -8,23 +8,27 @@ namespace chess_console
     
         static void Main(string[] args)
         {
-            Tabuleiro t = new Tabuleiro(8, 8);
+           
 
             try
             {
-                t.ColocarPeca(new Rei(Enum.Parse<Cor>("Branca"), t), new Position(0, 4));
-                t.ColocarPeca(new Rei(Enum.Parse<Cor>("Preta"), t), new Position(7, 4));
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Branca"), t), new Position(0, 0));
-                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Branca"), t), new Position(0, 7));
+                while(partida.terminada != true)
+                {
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.tab);
 
-                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Preta"), t), new Position(7, 0));
-                t.ColocarPeca(new Torre(Enum.Parse<Cor>("Preta"), t), new Position(7, 7));
+                    Console.Write("Origem: ");
+                    Position origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    Console.WriteLine("Destino: ");
+                    Position destino = Tela.lerPosicaoXadrez().toPosicao();
+
+                    partida.ExecutaMovimento(origem, destino);
+                }
 
 
-
-
-                Tela.ImprimirTabuleiro(t);
             }
             catch (TabuleiroException ex)
             {

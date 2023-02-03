@@ -45,6 +45,19 @@ namespace chess_console.tabuleiro
             pecas[pos.Linha,pos.Coluna] = p;
             p.position = pos;
         }
+
+        public Peca RetirarPeca(Position pos)
+        {
+            if( peca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = peca(pos);
+            aux.position = null;
+
+            pecas[pos.Linha, pos.Coluna] = null;
+            return aux;
+        }
         
         public bool PosicaoValida(Position pos)
         {

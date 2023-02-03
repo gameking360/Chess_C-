@@ -23,6 +23,11 @@ namespace chess_console.tabuleiro
             QtdMovimentos = 0;
         }
 
+        public void IncrementarQuantidade()
+        {
+            QtdMovimentos++;
+        }
+
         
     }
 }
