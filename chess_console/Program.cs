@@ -9,7 +9,6 @@ namespace chess_console
         static void Main(string[] args)
         {
            
-
             try
             {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
@@ -21,6 +20,14 @@ namespace chess_console
 
                     Console.Write("Origem: ");
                     Position origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
+
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.tab,posicoesPossiveis);
+
+
+
 
                     Console.WriteLine("Destino: ");
                     Position destino = Tela.lerPosicaoXadrez().toPosicao();
@@ -39,6 +46,5 @@ namespace chess_console
         }
 
     }
-    
 
 }

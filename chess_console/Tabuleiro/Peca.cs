@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace chess_console.tabuleiro
 {
-     class Peca
+     abstract class Peca
     {
         public Cor Cor { get; protected set; }
         public Position position { get;  set; }
@@ -28,6 +28,8 @@ namespace chess_console.tabuleiro
             QtdMovimentos++;
         }
 
+        public abstract bool[,] movimentosPossiveis();
+        
         
     }
 }
