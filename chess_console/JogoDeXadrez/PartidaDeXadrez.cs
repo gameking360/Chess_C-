@@ -10,8 +10,8 @@ namespace JogoDeXadrez
      class PartidaDeXadrez
     {
         public Tabuleiro tab { get; private set; }
-        private int turno;
-        private Cor jogadorAtual;
+        public int turno { get; private set; }
+        public Cor jogadorAtual { get; private set; }
         public bool terminada { get; private set; }
 
         public PartidaDeXadrez()
@@ -32,6 +32,25 @@ namespace JogoDeXadrez
 
         }
 
+        public void RealizaJogada(Position origem, Position destino)
+        {
+            ExecutaMovimento(origem, destino);
+            turno++;
+            mudaJogador();
+        }
+
+        private void mudaJogador()
+        {
+            if(jogadorAtual == Cor.Branca)
+            {
+                jogadorAtual = Cor.Preta;
+            }
+            else if(jogadorAtual == Cor.Preta)
+            {
+                jogadorAtual = Cor.Branca;
+            }
+        }
+
         private void colocarPecas()
         {
             tab.ColocarPeca(new Rei(Enum.Parse<Cor>("Branca"), tab), new PosicaoXadrez('e', 1).toPosicao());
@@ -40,6 +59,31 @@ namespace JogoDeXadrez
             tab.ColocarPeca(new Torre(Enum.Parse<Cor>("Branca"), tab), new PosicaoXadrez('a', 1).toPosicao());
             tab.ColocarPeca(new Torre(Enum.Parse<Cor>("Branca"), tab), new PosicaoXadrez('h', 1).toPosicao());
 
+        }
+
+        public void validaPosicao(Position pos)
+        {
+            if (tab.peca(pos) == null)
+            {
+                throw new TabuleiroException("Não existe peça nessa posição.");
+
+            }
+            
+            if(jogadorAtual != tab.peca(pos).Cor)
+            {
+                throw new TabuleiroException("Essa peça não pertence a você");
+            }
+            if (!tab.peca(pos).existeMovimentosPossiveis())
+            {
+                throw new TabuleiroException("Não há lugares para mover essa peça");
+            }
+        }
+        public void validaPosicaoDestino(Position origem,Position destino)
+        {
+            if(!tab.peca(origem).PodeMoverPara(destino))
+            {
+                throw new TabuleiroException("Posição de destino inválida");
+            }
         }
     }
 }

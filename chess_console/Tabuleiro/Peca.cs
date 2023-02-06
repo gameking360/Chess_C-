@@ -28,8 +28,27 @@ namespace chess_console.tabuleiro
             QtdMovimentos++;
         }
 
+
         public abstract bool[,] movimentosPossiveis();
         
-        
+        public bool existeMovimentosPossiveis()
+        {
+            bool[,] mat = movimentosPossiveis();
+            for (int i = 0; i < Tab.linhas; i++)
+            {
+                for (int j = 0; j < Tab.colunas; j++)
+                {
+                    if (mat[i,j] == true)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public bool PodeMoverPara(Position position)
+        {
+            return movimentosPossiveis()[position.Linha, position.Coluna];
+        }
     }
 }

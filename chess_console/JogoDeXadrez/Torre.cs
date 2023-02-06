@@ -59,7 +59,7 @@ namespace JogoDeXadrez
             }
 
             //Esquerda
-            p.DefinirValores(p.Linha, p.Coluna - 1);
+            p.DefinirValores(position.Linha, position.Coluna - 1);
             while (Tab.PosicaoValida(p) && PodeMover(p))
             {
                 mat[p.Linha, p.Coluna] = true;

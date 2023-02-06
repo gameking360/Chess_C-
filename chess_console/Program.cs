@@ -18,8 +18,13 @@ namespace chess_console
                     Console.Clear();
                     Tela.ImprimirTabuleiro(partida.tab);
 
+                    Console.WriteLine();
+                    Console.WriteLine("Turno: " + partida.turno);
+                    Console.WriteLine("Aguardando jogada da "+partida.jogadorAtual);
+
                     Console.Write("Origem: ");
                     Position origem = Tela.lerPosicaoXadrez().toPosicao();
+                    partida.validaPosicao(origem);
 
                     bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
 
@@ -31,8 +36,9 @@ namespace chess_console
 
                     Console.WriteLine("Destino: ");
                     Position destino = Tela.lerPosicaoXadrez().toPosicao();
+                    partida.validaPosicaoDestino(origem,destino);
 
-                    partida.ExecutaMovimento(origem, destino);
+                    partida.RealizaJogada(origem, destino);
                 }
 
 
