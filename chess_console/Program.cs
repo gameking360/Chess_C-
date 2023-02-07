@@ -8,19 +8,14 @@ namespace chess_console
     
         static void Main(string[] args)
         {
-           
-            try
-            {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                while(partida.terminada != true)
+            while (partida.terminada != true)
+            {
+                try
                 {
                     Console.Clear();
-                    Tela.ImprimirTabuleiro(partida.tab);
-
-                    Console.WriteLine();
-                    Console.WriteLine("Turno: " + partida.turno);
-                    Console.WriteLine("Aguardando jogada da "+partida.jogadorAtual);
+                    Tela.imprimirPartida(partida);
 
                     Console.Write("Origem: ");
                     Position origem = Tela.lerPosicaoXadrez().toPosicao();
@@ -29,26 +24,32 @@ namespace chess_console
                     bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
 
                     Console.Clear();
-                    Tela.ImprimirTabuleiro(partida.tab,posicoesPossiveis);
+                    Tela.ImprimirTabuleiro(partida.tab, posicoesPossiveis);
 
 
 
 
                     Console.WriteLine("Destino: ");
                     Position destino = Tela.lerPosicaoXadrez().toPosicao();
-                    partida.validaPosicaoDestino(origem,destino);
+                    partida.validaPosicaoDestino(origem, destino);
 
                     partida.RealizaJogada(origem, destino);
+                    Console.Clear();
+
+                    Tela.imprimirPartida(partida);
+
+
                 }
 
+                catch (TabuleiroException ex)
+                {
+                    
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                }
 
             }
-            catch (TabuleiroException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-           
+            Console.ReadLine();
         }
 
     }

@@ -19,6 +19,55 @@ namespace chess_console
                 Console.WriteLine();
             }
             Console.WriteLine("  A B C D E F G H");
+            Console.WriteLine();
+        }
+
+        public static void imprimirPartida(PartidaDeXadrez partida)
+        {
+            ImprimirTabuleiro(partida.tab);
+            imprimirPecasCapturadas(partida);
+
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + partida.turno);
+            if (!partida.terminada)
+            {
+                Console.WriteLine("Aguardando jogada da " + partida.jogadorAtual);
+
+                if (partida.xeque)
+                {
+                    Console.WriteLine("Você está em xeque");
+                }
+            }
+            else
+            {
+                Console.WriteLine("XEQUE MATE!!");
+                Console.WriteLine("Vencedor: "+ partida.jogadorAtual);
+            }
+            
+        }
+
+        public static void imprimirPecasCapturadas(PartidaDeXadrez partida)
+        {
+            Console.WriteLine("Peças capturadas");
+            Console.Write("Brancas: ");
+            imprimirConjunto(partida.pecasCapturadas(Cor.Branca));
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            imprimirConjunto(partida.pecasCapturadas(Cor.Preta));
+            Console.WriteLine();
+            Console.ForegroundColor = aux;
+        }
+
+        public static void imprimirConjunto(HashSet<Peca> conjunto)
+        {
+            Console.Write("[ ");
+            foreach (var item in conjunto)
+            {
+                Console.Write(item +" ");
+            }
+            Console.Write("]");
         }
 
         public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoePossiveis)

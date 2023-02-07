@@ -28,6 +28,11 @@ namespace chess_console.tabuleiro
             QtdMovimentos++;
         }
 
+        public void DecrementarQuantidade()
+        {
+            QtdMovimentos--;
+        }
+
 
         public abstract bool[,] movimentosPossiveis();
         
