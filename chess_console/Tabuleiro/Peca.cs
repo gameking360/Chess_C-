@@ -51,7 +51,7 @@ namespace chess_console.tabuleiro
             }
             return false;
         }
-        public bool PodeMoverPara(Position position)
+        public bool movimentoPossivel(Position position)
         {
             return movimentosPossiveis()[position.Linha, position.Coluna];
         }

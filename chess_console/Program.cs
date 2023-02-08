@@ -34,9 +34,7 @@ namespace chess_console
                     partida.validaPosicaoDestino(origem, destino);
 
                     partida.RealizaJogada(origem, destino);
-                    Console.Clear();
-
-                    Tela.imprimirPartida(partida);
+                    
 
 
                 }
@@ -49,7 +47,9 @@ namespace chess_console
                 }
 
             }
-            Console.ReadLine();
+            Console.Clear();
+
+            Tela.imprimirPartida(partida);
         }
 
     }
