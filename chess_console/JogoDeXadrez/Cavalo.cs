@@ -62,13 +62,13 @@ namespace JogoDeXadrez
                 mat[p.Linha, p.Coluna] = true;
             }
 
-            p.DefinirValores(position.Linha + 2, position.Coluna - 2);
+            p.DefinirValores(position.Linha + 2, position.Coluna - 1);
             if (Tab.PosicaoValida(p) && PodeMover(p))
             {
                 mat[p.Linha, p.Coluna] = true;
             }
 
-            p.DefinirValores(position.Linha + 2, position.Coluna + 2);
+            p.DefinirValores(position.Linha + 2, position.Coluna + 1);
             if (Tab.PosicaoValida(p) && PodeMover(p))
             {
                 mat[p.Linha, p.Coluna] = true;
